@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nos Missions chez ECONOVA</title>
+    <style>
+      :root {
+        --primary: #2c5f2d;
+        --primary-light: #4caf50;
+        --background: #f6f8fa;
+        --card: #ffffff;
+        --text: #333333;
+        --text-light: #666666;
+        --border-radius: 12px;
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px 0;
+      }
+
+      header h1 {
+        color: var(--primary);
+        margin-bottom: 10px;
+        font-size: 2.2rem;
+      }
+
+      header p {
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .span-12 {
+        grid-column: span 12;
+      }
+
+      .span-8 {
+        grid-column: span 8;
+      }
+
+      .span-6 {
+        grid-column: span 6;
+      }
+
+      .span-4 {
+        grid-column: span 4;
+      }
+
+      .mission-card {
+        border-top: 4px solid var(--primary);
+      }
+
+      .card h2 {
+        color: var(--primary);
+        margin-bottom: 12px;
+        font-size: 1.6rem;
+      }
+
+      .card h3 {
+        color: var(--primary);
+        margin: 15px 0 8px;
+        font-size: 1.3rem;
+      }
+
+      .card h4 {
+        margin: 12px 0 5px;
+        font-size: 1.1rem;
+      }
+
+      .tabs {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .tab {
+        padding: 8px 16px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+      }
+
+      .tab.active {
+        border-bottom: 2px solid var(--primary);
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .card-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .card-title .icon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-light);
+        color: white;
+        border-radius: 50%;
+        margin-right: 12px;
+        font-size: 14px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 4px 10px;
+        background-color: rgba(76, 175, 80, 0.1);
+        color: var(--primary);
+        border-radius: 15px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .highlight {
+        background-color: rgba(76, 175, 80, 0.05);
+        border-left: 3px solid var(--primary);
+        padding: 20px;
+        margin: 12px 0;
+      }
+
+      ul {
+        margin: 10px 0;
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 6px;
+      }
+
+      .chip {
+        background-color: #f0f0f0;
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 15px;
+        margin: 4px;
+        font-size: 0.9rem;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 0;
+      }
+
+      .step {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      .step-number {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        flex-shrink: 0;
+        font-size: 0.8rem;
+      }
+
+      .step-content {
+        flex-grow: 1;
+      }
+
+      .equipe {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 20px 0;
+      }
+
+      .membre {
+        text-align: center;
+      }
+
+      .membre-photo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        margin: 0 auto 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: #555;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 900px) {
+        .bento-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .span-12,
+        .span-8,
+        .span-6,
+        .span-4 {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Nos Missions chez ECONOVA</h1>
+        <p>
+          Synthèse des projets réalisés par notre équipe, centrés sur la RSE, la
+          transparence et le bien-être au travail.
+        </p>
+
+        <div class="equipe">
+          <div class="membre">
+            <div class="membre-photo">K</div>
+            <p>Karelle</p>
+          </div>
+          <div class="membre">
+            <div class="membre-photo">A</div>
+            <p>Aurélien</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="bento-grid">
+        <!-- Introduction Card -->
+        <div class="card span-12">
+          <div class="card-title">
+            <div class="icon">📋</div>
+            <h2>Vue d'ensemble des missions</h2>
+          </div>
+          <p>
+            Notre équipe a mené trois missions principales qui s'inscrivent dans
+            une démarche globale de renforcement de la politique RSE d'ECONOVA :
+          </p>
+          <div class="tags" style="margin-top: 10px">
+            <div class="tag">Transparence</div>
+            <div class="tag">Bien-être au travail</div>
+            <div class="tag">Égalité professionnelle</div>
+            <div class="tag">Communication</div>
+            <div class="tag">Analyse</div>
+          </div>
+          <div class="highlight">
+            <p>
+              Les missions s'articulent autour de trois axes complémentaires :
+            </p>
+            <ul>
+              <li>
+                <strong>Communication externe</strong> : Refonte de la page web
+                sur la transparence
+              </li>
+              <li>
+                <strong>Ressources humaines</strong> : Création d'un
+                questionnaire de satisfaction au travail
+              </li>
+              <li>
+                <strong>Stratégie RSE</strong> : Plan d'action pour l'égalité
+                professionnelle H/F
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mission 1 Card -->
+        <div class="card mission-card span-6">
+          <div class="card-title">
+            <div class="icon">🌐</div>
+            <h2>Mission 1 : Refonte page web "Transparence"</h2>
+          </div>
+
+          <div class="tabs">
+            <div class="tab active" onclick="changeTab(this, 'contexte1')">
+              Contexte
+            </div>
+            <div class="tab" onclick="changeTab(this, 'methodo1')">
+              Choix méthodologiques
+            </div>
+            <div class="tab" onclick="changeTab(this, 'resultats1')">
+              Résultats
+            </div>
+          </div>
+
+          <div id="contexte1" class="tab-content active">
+            <p>
+              Suite à une enquête de l'ONG Green Transparency révélant des
+              incohérences dans la communication environnementale d'ECONOVA, la
+              direction a souhaité renforcer sa transparence.
+            </p>
+            <div class="highlight">
+              <p><strong>Problématiques identifiées :</strong></p>
+              <ul>
+                <li>
+                  Taux réels de fibres recyclées ambigus (50% annoncé mais 30%
+                  dans certaines collections)
+                </li>
+                <li>
+                  Production présentée comme française alors que 40% est au
+                  Portugal
+                </li>
+                <li>Engagement "zéro déchet" non atteint (82% actuellement)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="methodo1" class="tab-content">
+            <h4>Design Bento UI</h4>
+            <p>Notre choix s'est porté sur ce design pour :</p>
+            <ul>
+              <li>Organiser clairement les différentes informations</li>
+              <li>Faciliter la lecture et la compréhension rapide</li>
+              <li>Proposer un format moderne et attrayant</li>
+            </ul>
+
+            <h4>Visualisation des données</h4>
+            <p>Nous avons intégré des graphiques pour :</p>
+            <ul>
+              <li>Renforcer l'impact visuel des données chiffrées</li>
+              <li>Illustrer les écarts et les objectifs de progression</li>
+              <li>
+                Démontrer la transparence par des représentations précises
+              </li>
+            </ul>
+          </div>
+
+          <div id="resultats1" class="tab-content">
+            <p>La nouvelle page web a permis de :</p>
+            <ul>
+              <li>
+                Clarifier les informations sur les fibres recyclées (50%
+                général, 30% collections techniques)
+              </li>
+              <li>
+                Expliquer la répartition de production avec les justifications
+              </li>
+              <li>Reformuler l'engagement "zéro déchet" en objectif 2026</li>
+              <li>Transformer une critique en opportunité de transparence</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mission 2 Card -->
+        <div class="card mission-card span-6">
+          <div class="card-title">
+            <div class="icon">📊</div>
+            <h2>Mission 2 : Questionnaire de satisfaction</h2>
+          </div>
+
+          <div class="tabs">
+            <div class="tab active" onclick="changeTab(this, 'contexte2')">
+              Contexte
+            </div>
+            <div class="tab" onclick="changeTab(this, 'methodo2')">
+              Choix méthodologiques
+            </div>
+            <div class="tab" onclick="changeTab(this, 'resultats2')">
+              Résultats
+            </div>
+          </div>
+
+          <div id="contexte2" class="tab-content active">
+            <p>
+              La DRH souhaitait mettre en place un outil de mesure mensuelle de
+              la satisfaction pour améliorer le bien-être au travail et
+              identifier rapidement les points de tension.
+            </p>
+            <div class="highlight">
+              <p><strong>Besoins identifiés :</strong></p>
+              <ul>
+                <li>Mesurer plusieurs dimensions du bien-être au travail</li>
+                <li>Suivre l'évolution des indicateurs dans le temps</li>
+                <li>Recueillir des suggestions concrètes d'amélioration</li>
+                <li>Format simple et rapide à compléter</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="methodo2" class="tab-content">
+            <h4>Échelles d'évaluation</h4>
+            <p>Nous avons choisi des échelles de Likert (1-5) pour :</p>
+            <ul>
+              <li>Obtenir des évaluations nuancées plutôt que binaires</li>
+              <li>Adapter les libellés à chaque type de question</li>
+              <li>Permettre une analyse statistique précise</li>
+            </ul>
+
+            <h4>Structure thématique</h4>
+            <p>Organisation en sections distinctes :</p>
+            <ul>
+              <li>
+                Développement personnel (équilibre vie pro/perso, montée en
+                compétences)
+              </li>
+              <li>Satisfaction et environnement de travail</li>
+              <li>Communication et management</li>
+              <li>Reconnaissance et suggestions</li>
+            </ul>
+          </div>
+
+          <div id="resultats2" class="tab-content">
+            <p>Le questionnaire mensuel permet maintenant :</p>
+            <ul>
+              <li>Une collecte systématique de données de satisfaction</li>
+              <li>
+                L'établissement de tendances et la détection précoce des
+                problèmes
+              </li>
+              <li>La priorisation des actions d'amélioration</li>
+              <li>
+                Une meilleure implication des collaborateurs dans l'évolution de
+                l'entreprise
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mission 3 Card -->
+        <div class="card mission-card span-8">
+          <div class="card-title">
+            <div class="icon">♀️♂️</div>
+            <h2>
+              Mission 3 : Plan d'action pour le label "Égalité professionnelle"
+            </h2>
+          </div>
+
+          <div class="tabs">
+            <div class="tab active" onclick="changeTab(this, 'contexte3')">
+              Contexte
+            </div>
+            <div class="tab" onclick="changeTab(this, 'methodo3')">
+              Choix méthodologiques
+            </div>
+            <div class="tab" onclick="changeTab(this, 'resultats3')">
+              Résultats
+            </div>
+          </div>
+
+          <div id="contexte3" class="tab-content active">
+            <p>
+              ECONOVA souhaite obtenir le label "Égalité professionnelle
+              hommes-femmes". Le bilan social révèle :
+            </p>
+            <ul>
+              <li>Répartition H/F déséquilibrée : 62%/38%</li>
+              <li>Promotions inégales : 25% femmes / 75% hommes</li>
+              <li>Écart salarial de 9,3% en faveur des hommes</li>
+              <li>
+                Faible diversité dans le management (moins de 10% de cadres
+                issus de minorités)
+              </li>
+              <li>Politique de conciliation vie pro/perso insuffisante</li>
+            </ul>
+          </div>
+
+          <div id="methodo3" class="tab-content">
+            <h4>Structure d'analyse</h4>
+            <p>
+              Nous avons structuré notre analyse autour de 5 domaines clés :
+            </p>
+            <ul>
+              <li>Recrutement et évolution de carrière</li>
+              <li>Rémunération et équité salariale</li>
+              <li>Conciliation vie professionnelle/personnelle</li>
+              <li>Culture d'entreprise et inclusion</li>
+              <li>Gouvernance et engagement de la direction</li>
+            </ul>
+
+            <h4>Approche pragmatique</h4>
+            <p>Nous avons privilégié :</p>
+            <ul>
+              <li>Des actions réalistes plutôt qu'idéalistes</li>
+              <li>Un plan progressif sur 2 ans</li>
+              <li>Des objectifs chiffrés et mesurables</li>
+              <li>Une priorisation claire des actions</li>
+            </ul>
+          </div>
+
+          <div id="resultats3" class="tab-content">
+            <p>Le plan d'action définit :</p>
+            <ul>
+              <li>15 actions concrètes réparties en 6 axes stratégiques</li>
+              <li>Un calendrier de mise en œuvre sur 24 mois</li>
+              <li>Des indicateurs de suivi pour chaque action</li>
+              <li>4 actions prioritaires à déployer immédiatement :</li>
+            </ul>
+            <div class="highlight">
+              <ol>
+                <li>Audit salarial complet (6 mois)</li>
+                <li>Critères de promotion transparents (3 mois)</li>
+                <li>Programme de mentorat pour les femmes (12 mois)</li>
+                <li>Formation à la diversité et l'inclusion (2 mois)</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Competences Card -->
+        <div class="card span-4">
+          <div class="card-title">
+            <div class="icon">🔧</div>
+            <h2>Compétences mobilisées</h2>
+          </div>
+          <div class="skills">
+            <div class="chip">Web design</div>
+            <div class="chip">Data visualisation</div>
+            <div class="chip">UX/UI</div>
+            <div class="chip">Analyse de données</div>
+            <div class="chip">Planification stratégique</div>
+            <div class="chip">Communication</div>
+            <div class="chip">RSE</div>
+            <div class="chip">Méthodologie d'enquête</div>
+          </div>
+
+          <h3>Valeur ajoutée</h3>
+          <ul>
+            <li>Communication externe plus transparente</li>
+            <li>Meilleure compréhension des attentes internes</li>
+            <li>Feuille de route structurée pour l'égalité professionnelle</li>
+            <li>Outils de pilotage pour la politique RSE</li>
+          </ul>
+        </div>
+
+        <!-- Conclusion Card -->
+        <div class="card span-12">
+          <div class="card-title">
+            <div class="icon">🎯</div>
+            <h2>Approche globale et cohérence des missions</h2>
+          </div>
+
+          <div class="highlight">
+            <p>
+              Nos trois missions s'inscrivent dans une démarche complémentaire
+              de renforcement de la RSE :
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <strong>Communication externe</strong> - La refonte de la page
+              répond aux enjeux de transparence envers les parties prenantes,
+              transformant une critique en opportunité d'amélioration.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <strong>Dimension sociale interne</strong> - Le questionnaire de
+              satisfaction permet d'impliquer les collaborateurs dans
+              l'amélioration continue des conditions de travail.
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <strong>Gouvernance et stratégie</strong> - Le plan d'action pour
+              l'égalité professionnelle structure la transformation de
+              l'entreprise sur le long terme.
+            </div>
+          </div>
+
+          <h3>Apprentissages clés</h3>
+          <ul>
+            <li>
+              L'importance d'une approche intégrée de la RSE touchant tous les
+              aspects de l'entreprise
+            </li>
+            <li>
+              La nécessité d'allier transparence et pragmatisme dans la
+              transformation
+            </li>
+            <li>
+              L'efficacité des outils de mesure régulière pour piloter les
+              changements
+            </li>
+            <li>
+              La valeur d'une démarche progressive mais ambitieuse pour les
+              changements structurels
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <p>Document réalisé par Karelle et Aurélien - Février 2025</p>
+      </footer>
+    </div>
+
+    <script>
+      function changeTab(tab, contentId) {
+        // Remove active class from all tabs
+        const tabs = tab.parentElement.querySelectorAll(".tab");
+        tabs.forEach((t) => t.classList.remove("active"));
+
+        // Add active class to clicked tab
+        tab.classList.add("active");
+
+        // Hide all tab contents
+        const tabContents =
+          tab.parentElement.parentElement.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => content.classList.remove("active"));
+
+        // Show selected tab content
+        document.getElementById(contentId).classList.add("active");
+      }
+    </script>
+  </body>
+</html>
